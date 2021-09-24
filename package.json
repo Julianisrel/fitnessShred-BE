@@ -1,0 +1,19 @@
+{
+  "name": "fitnessshred_node_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-openid-connect": "^2.5.0",
+    "helmet": "^4.6.0",
+    "nodemon": "^2.0.12"
+  }
+}
