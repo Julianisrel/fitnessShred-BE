@@ -1,6 +1,6 @@
 const express = require("express")
 const bcrypt = require("bcryptjs")
-const knex = require("knex")
+const knex = require("knex")({ client: 'sqlite3', useNullAsDefault: true });
 const Users = require("./users-model")
 const db = require("../database/config")
 const { validateUser, restrict } = require('./user-middleware');
