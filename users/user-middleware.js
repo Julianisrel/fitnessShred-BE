@@ -24,11 +24,11 @@ function restrict(){
 
             if(!token){
                 return res.status(401).json({
-                    errorMessage: "Invalid credentials"
+                    errorMessage: "Missing token value"
                 })
             }
 
-            jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
+            jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
                 if(err){
                     return res.status(401).json({
                         errorMessage: "Invalid credentials"

@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs")
 const knex = require("knex")({ client: 'sqlite3', useNullAsDefault: true });
 const Users = require("./users-model")
 const db = require("../database/config")
+const jwt = require("jsonwebtoken")
+const secret = require("./serect")
 const { validateUser, restrict } = require('./user-middleware');
 
 
@@ -21,8 +23,6 @@ router.post('/register', validateUser(), async (req, res, next) => {
     try{
         const { username, password, department } = req.body;
         const user = await Users.getUserBy({ username });
-
-        console.log(user);
 
         if(user){
             return res.status(409).json({
@@ -63,7 +63,7 @@ router.post('/login', async (req, res, next) => {
 				const token = jwt.sign({
 				            userID: user.id,
 				            userDep: user.department
-				        }, process.env.TOKEN_SECRET)
+				        }, secret.jwtSecret)
 
 				        res.cookie("token", token);
 
