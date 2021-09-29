@@ -64,10 +64,12 @@ router.post('/login', async (req, res, next) => {
             userDep: user.department
         }, secret.jwtSecret)
 
-        res.cookie("token", token);
+        // res.cookie("token", token);
+
+        user.token = token;
 
         return res.status(200).json({
-            message: `Welcome ${user.username}`
+            user
         })
 
     } catch (error) {
