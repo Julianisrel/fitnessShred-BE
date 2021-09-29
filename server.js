@@ -35,7 +35,7 @@ server.use(cookieParser());
 //   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 // });
 
-server.use(usersRouter)
+server.use("/api/user", usersRouter);
 // server.use("/api",authOrouter);
 
 server.get("/", (req, res) => {
